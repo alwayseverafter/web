@@ -1,0 +1,11 @@
+/* A separate screen clips the invitation while the hardware stays outside. */
+.phone{overflow:visible}
+.phone-screen{height:100%;width:100%;overflow:hidden;border-radius:28px;isolation:isolate;background:#f4eedf}
+.phone-screen>.invitation-art{border-radius:inherit}
+.phone-hardware{position:absolute;inset:0;pointer-events:none}
+.phone-hardware span{position:absolute;width:5px;border:1px solid #77796f;background:linear-gradient(90deg,#73766c,#d3d2c8 50%,#93958a);border-radius:2px;box-shadow:0 1px 2px #24252135}
+.phone-action{left:-7px;top:16%;height:4%}
+.phone-volume-up{left:-7px;top:25%;height:8%}
+.phone-volume-down{left:-7px;top:36%;height:8%}
+.phone-power{right:-7px;top:29%;height:13%}
+@media(max-width:600px){.design-visual .phone-screen{border-radius:24px}}
