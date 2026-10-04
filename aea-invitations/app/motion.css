@@ -1,0 +1,34 @@
+/* Scroll choreography shares the site's paper, ink and gold palette. */
+.header::after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(var(--page-progress,0));transform-origin:left;pointer-events:none}
+.preview-scroll-stage{align-self:stretch;min-width:0}
+/* Keep the desktop preview linked to the full experience section. */
+@media(min-width:601px){.preview-scroll-stage{--progress:inherit!important}}
+.motion-ready [data-reveal]{transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .section-heading[data-reveal] h2,.motion-ready .collection-heading[data-reveal] h2{clip-path:inset(0 0 100%);translate:0 25px;transition:clip-path 1.35s var(--ease),translate 1.35s var(--ease)}
+.motion-ready .section-heading.revealed h2,.motion-ready .collection-heading.revealed h2{clip-path:inset(0);translate:0 0}
+.motion-ready .design-card[data-reveal]{transform:translateY(55px) scale(.97);transition:opacity .9s var(--ease),transform 1.3s var(--ease)}
+.motion-ready .design-card.revealed{transform:none}
+.motion-ready .design-visual .phone{translate:0 calc((.5 - var(--travel,.5))*100px);rotate:calc((var(--travel,.5) - .5)*12deg)}
+.motion-ready .experience-orbit{transform:rotate(calc(var(--progress,0)*100deg)) scale(calc(.92 + var(--progress,0)*.12));border-style:dashed}
+.motion-ready .experience-orbit::after{transform:scale(calc(1 - var(--progress,0)*.08))}
+.process-list{position:relative}
+.process-list::before{content:"";position:absolute;left:-20px;top:0;bottom:0;width:1px;background:var(--line)}
+.process-list::after{content:"";position:absolute;left:-20px;top:0;bottom:0;width:2px;background:var(--gold);transform-origin:top;transform:scaleY(clamp(0,calc((var(--travel,0) - .1)*1.5),1))}
+.motion-ready .process-list article>span{clip-path:inset(0 0 100%);transition:clip-path 1.2s var(--ease)}
+.motion-ready .process-list article.revealed>span{clip-path:inset(0)}
+.motion-ready .final-cta .cta-logo{translate:0 calc((.5 - var(--travel,.5))*65px);scale:calc(.92 + var(--travel,.5)*.16)}
+@media(max-width:600px){
+  .motion-ready .preview-scroll-stage{height:1050px;position:relative}
+  .motion-ready .sticky-preview{position:sticky;top:85px;height:min(550px,calc(100svh - 100px));min-height:370px}
+  .motion-ready .experience-phone{height:min(480px,calc(100svh - 175px));min-height:300px;width:225px;transform:rotate(calc(-5deg + var(--progress,0)*10deg))}
+  .motion-ready .scroll-invitation{transform:translateY(calc(var(--progress,0)*-550px))}
+  .motion-ready .sticky-preview>.text-link{margin-top:20px;font-size:12px}
+  .motion-ready .experience-orbit{width:285px;height:285px}
+  .motion-ready .design-visual .phone{translate:0 calc((.5 - var(--travel,.5))*70px);rotate:calc((var(--travel,.5) - .5)*9deg)}
+  .process-list::before,.process-list::after{left:-12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .header::after,.process-list::after{display:none}
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .design-visual .phone,.cta-logo{translate:none!important;rotate:none!important;scale:none!important}
+}

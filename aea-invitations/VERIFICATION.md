@@ -20,3 +20,9 @@ Checks completed:
 - 21st review: seven informational hardcoded-color findings, no errors or automatic fixes. These are intentional invitation palettes. Catalog search unavailable without 21st login; no catalog components reused.
 
 Limitations: no public deployment connection available; production preview runs locally. Real hosted RSVP collection, payment checkout, and server-delivered enquiry emails are not configured. Enquiries use explicit email/WhatsApp handoff. Physical iOS/Android devices and real reduced-motion OS toggling were not available; responsive sizes and reduced-motion CSS were checked.
+
+## Additional scroll motion
+
+Added native scroll-linked collection tilt/parallax, masked heading reveals, staggered cards/FAQs, a drawing process line, footer artwork drift and a header progress line. On mobile the experience phone pins within a bounded stage while the invitation moves through event details. Motion uses a single scheduled animation frame, batches geometry reads, never intercepts touch events, and disables spatial effects for reduced-motion preferences (including live preference changes).
+
+Validation: TypeScript and all 11 exported routes passed. Browser checks at 390x844 and 360x640 mobile, 768x1024 tablet, and 1440x900 desktop showed no horizontal overflow. Mobile scrolling advanced the pinned preview from 0.577 to 1.0 progress, with the phone content moving from -317px to -550px. Desktop pinning remained at 135px and content tracked section progress. Filtered collection cards were registered for animation; no browser console errors were reported. Touch-device hardware was not available; the mobile checks used responsive browser viewports.
