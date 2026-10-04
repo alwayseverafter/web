@@ -12,6 +12,12 @@ A complete responsive invitation studio website, built with React, TypeScript an
 
 The exported `dist/client` folder can be hosted on a static hosting service that supports extensionless HTML URLs. The included preview server implements that routing. Never publish the repository root, node_modules, or dist/server as static assets.
 
+## Vercel deployment
+
+Set the Vercel project's Root Directory to `aea-invitations` and deploy the `codex/alwayseverafter` branch. The checked-in `vercel.json` selects the Other framework preset, runs `npm run build`, and publishes `dist/client`. Clean URLs serve exported pages such as `/designs` and `/invitation/the-secret-garden` without an `.html` suffix.
+
+This project uses Vinext's static export, not the Next.js build pipeline. Using Vercel's Next.js preset would incorrectly require `.next/routes-manifest.json`. The repository configuration overrides that preset and output directory; no `.next` manifest is needed.
+
 ## Pages and interactions
 
 Home, filterable collection, six invitation previews, a three-step enquiry configurator, and privacy/contact information. Preview invitations include animated opening seals, sample RSVP with validation and response feedback, map links, calendar downloads, and optional synthesized music. Main-site motion uses native CSS and a single requestAnimationFrame loop with IntersectionObserver reveals. No scroll hijacking. Reduced-motion preferences disable spatial motion and continuous animation.
