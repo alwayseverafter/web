@@ -44,3 +44,11 @@ TypeScript validation and production export. Browser checks at desktop, tablet a
 
 21st catalog tooling was attempted, but requires a signed-in 21st account. No 21st components were installed. The supplied reference and brand assets guide the custom implementation.
 
+
+## Everlasting Grace
+
+`/invitation/everlasting-grace` is the Timeless Grace reference recreation requested by the owner, personalised for Younuz & Amelia. It includes a custom Y & A envelope seal, an animated opening, cinematic hero, scratch-date interaction with keyboard button alternatives, Nikkah panel, illustrated timeline, countdown, optional embedded map, dress palette, gift dialog and sample RSVP dialog. It is selectable in the collection and enquiry configurator.
+
+The sample date is 20 January 2027 at 18:00 Dubai time. Family names are intentionally not invented. RSVP responses are local demonstrations, and the gift panel is a sample rather than a live registry. The map only loads after the visitor chooses to show it. Music is a generated Web Audio melody activated by the visitor. Spatial transitions honour reduced motion; background video has a pause control.
+
+This template reuses decorative artwork from the specifically requested reference, unlike the original six designs. Original asset URLs are recorded in `public/assets/grace/sources.json`. The decorative hero video comes from `https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Newbeautifulvideo.mp4`; its local mobile version is silent and compressed from 17.1 MB to 616 KB. The personalised envelope was edited using the built-in image generation tool to change only the seal initials to Y & A, then converted to WebP. The reference company's name, logo, family identities, RSVP destination and soundtrack are not used. The envelope opening is recreated with CSS rather than reusing footage with the reference couple's initials.
