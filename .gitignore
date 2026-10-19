@@ -2,3 +2,8 @@
 *.zip
 *.tsbuildinfo
 .media-tools/
+
+# Local review exports and browser scratch state
+delivery/
+.playwright-cli/
+aea-invitations/output/

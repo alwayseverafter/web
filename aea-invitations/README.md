@@ -1,54 +1,71 @@
-# AlwaysEverafter
+# AlwaysEverafter — mobile invitation studio
 
-A complete responsive invitation studio website, built with React, TypeScript and Vinext. All fonts and artwork are served locally.
+A React 19 / TypeScript invitation studio using the existing Vinext + Vite static export and Tailwind/CSS stack. No PHP, payment service, or new backend was added.
 
-## Run
+## Run locally
 
-- `npm install`
-- `npm run dev` — development preview at http://127.0.0.1:5173
-- `npm run typecheck`
-- `npm run build` — exports all pages into `dist/client`
-- `npm run preview` — production preview at http://127.0.0.1:4173
+Use Node.js 22.13 or later. From this folder:
 
-The exported `dist/client` folder can be hosted on a static hosting service that supports extensionless HTML URLs. The included preview server implements that routing. Never publish the repository root, node_modules, or dist/server as static assets.
+```sh
+npm ci
+npm run dev
+```
 
-## Vercel deployment
+Development uses http://127.0.0.1:5173. For a production preview:
 
-Set the Vercel project's Root Directory to `aea-invitations` and deploy the `codex/alwayseverafter` branch. The checked-in `vercel.json` selects the Other framework preset, runs `npm run build`, and publishes `dist/client`. Clean URLs serve exported pages such as `/designs` and `/invitation/the-secret-garden` without an `.html` suffix.
+```sh
+npm run typecheck
+npm run build
+npm run preview
+```
 
-This project uses Vinext's static export, not the Next.js build pipeline. Using Vercel's Next.js preset would incorrectly require `.next/routes-manifest.json`. The repository configuration overrides that preset and output directory; no `.next` manifest is needed.
+The production preview defaults to http://127.0.0.1:4173. Set `PORT` to use another port. The review session uses http://127.0.0.1:4181.
 
-## Pages and interactions
+## Build and deploy
 
-Home, filterable collection, six invitation previews, a three-step enquiry configurator, and privacy/contact information. Preview invitations include animated opening seals, sample RSVP with validation and response feedback, map links, calendar downloads, and optional synthesized music. Main-site motion uses native CSS and a single requestAnimationFrame loop with IntersectionObserver reveals. No scroll hijacking. Reduced-motion preferences disable spatial motion and continuous animation.
+`npm run build` exports pages and assets to `dist/client`. Deploy only that directory to a static host with clean URLs (`/designs` maps to `/designs.html`). The included preview server implements this mapping. Keep the existing Vercel Other-framework configuration and project root `aea-invitations`. Do not publish repository roots, private environment files, or `dist/server` as static files. No deployment was performed for this redesign.
 
-## Business configuration
+## Collection and architecture
 
-Brand: AlwaysEverafter. Email: ashir.vp@alwayseverafter.com. WhatsApp: +49176667454311. Contact constants and design content are in `components/aea-site.tsx`.
+All seven existing templates remain. Four were added:
 
-Enquiries are prepared locally and sent by the visitor through email or WhatsApp. There is no server-side email delivery, checkout, or customer RSVP database. Sample RSVP responses are explicitly labelled demonstrations and never sent or persisted. The site makes no invented claims about prices, delivery times, guest limits, or customer reviews.
+- Olive & Ivory Wedding: `/templates/olive-ivory-wedding/index.html`
+- Botanical Editorial: `/invitation/botanical-editorial`
+- Modern Romantic: `/invitation/modern-romantic`
+- Heritage Celebration: `/invitation/heritage-celebration`
 
-Before a public commercial launch, supply the business's final legal/imprint information and confirm service terms, pricing, hosting periods and revision policies. No domain or external publishing account has been configured in this project.
+All eleven have `/designs/<slug>` detail pages and connect to `/create?design=<slug>`.
 
-## Brand assets and artwork
+- `lib/designs.ts`: shared template catalogue and preview routing.
+- `components/aea-site.tsx`: studio pages, catalogue, detail view, existing previews, enquiry flow.
+- `components/studio-invitation.tsx`: three new theme compositions and shared demonstration event fields.
+- `app/studio.css`: mobile-first refinement and scoped theme styling.
+- `components/grace-invitation.tsx`: preserved Everlasting Grace implementation.
+- `public/assets/previews`: optimized WebP captures of each actual invitation. Decorative preview controls were hidden only during capture; the live controls remain functional.
+- `public/templates/olive-ivory-wedding`: standalone imported page. Its document boundary isolates its CSS and JavaScript; no iframe or nested scrolling is used.
 
-Four supplied PNG brand assets have been trimmed to their transparent bounds and compressed to WebP, preserving the artwork. Originals remain untouched in Downloads. Used across the header, invitation seals, signoffs, footer and closing brand section.
+Main-site cards use static screenshots rather than eleven live embedded documents. The original seven invitation openings remain; none was added to the four new designs. Main-site continuous scroll choreography and the moving ribbon were removed from rendering. Existing illustration, monogram, wordmark, fonts, names, contact links and invitation details are preserved.
 
-Original garden artwork was generated with the built-in image generation tool and optimized to `public/assets/garden.webp`. Prompt: Romantic Italian garden in watercolor and gouache on textured ivory paper, cream limestone arch with delicate white roses and olive foliage, sage and muted gold light, large empty ivory center, distant lake; no text, logos, people, UI, or phone frame. Source: `C:/Users/ashir/.codex/visualizations/2026/10/04/01a10883-ba28-7063-9024-1e509beda381/garden-invitation.png`.
+## Imported ZIP provenance
 
-The reference was reviewed at https://webgencyinvitations.com/ including its home sections, order configurator, The Sacred Garden and Dolce Vita demos, and mobile layouts. Structure and interaction concepts informed this original implementation. No reference artwork, company name, testimonials or business claims were reused.
+The supplied `olive-ivory-wedding-source.zip` is the primary source for the imported template. Its own README identifies it as a reconstruction, **not an original export of the ChatGPT-hosted private implementation**. Its original palace media was unavailable; the provided inline SVG is preserved. The published reference could not be loaded by the web inspection tool, so visual equivalence to that private original is not claimed.
 
-## Verification
+Integration changes: a collection/selection toolbar, a favicon, local copies of the same Google Fonts, a separate `css/integration.css` for touch targets and focus, and honest RSVP feedback when browser storage is blocked. Existing invitation content, artwork, layout, countdown and navigation remain. The untouched supplied ZIP is included separately in the delivery folder. No hidden original files were recovered or invented.
 
-TypeScript validation and production export. Browser checks at desktop, tablet and mobile sizes: navigation, design filters, FAQ accordion, required enquiry fields, review state, email/WhatsApp message contents, invitation opening, sample RSVP decline, asset loading and horizontal overflow. No real messages or RSVPs were sent during testing.
+## Data and services
 
-21st catalog tooling was attempted, but requires a signed-in 21st account. No 21st components were installed. The supplied reference and brand assets guide the custom implementation.
+Enquiries are assembled on the visitor's device and handed to their email application or WhatsApp. The visitor must send the message there. No message was sent in testing. Business email: ashir.vp@alwayseverafter.com; WhatsApp: +49 176 667454311.
 
+All invitation details are demonstrations. The three new previews and original seven do not send real RSVPs. Olive & Ivory preserves its supplied local-storage RSVP (`oliveIvoryRsvpPreview`); no response reaches a couple. Clearing site data removes it. There is no server RSVP database, payment checkout, or customer dashboard in the original flow. External map and WhatsApp links need those services to be available.
 
-## Everlasting Grace
+## Assets
 
-`/invitation/everlasting-grace` is the Timeless Grace reference recreation requested by the owner, personalised for Younuz & Amelia. It includes a custom Y & A envelope seal, an animated opening, cinematic hero, scratch-date interaction with keyboard button alternatives, Nikkah panel, illustrated timeline, countdown, optional embedded map, dress palette, gift dialog and sample RSVP dialog. It is selectable in the collection and enquiry configurator.
+Existing brand assets and garden illustration remain. The Everlasting Grace artwork provenance is retained in `public/assets/grace/sources.json`. Confirm rights to those pre-existing reference assets before commercial reuse.
 
-The sample date is 20 January 2027 at 18:00 Dubai time. Family names are intentionally not invented. RSVP responses are local demonstrations, and the gift panel is a sample rather than a live registry. The map only loads after the visitor chooses to show it. Music is a generated Web Audio melody activated by the visitor. Spatial transitions honour reduced motion; background video has a pause control.
+Modern Romantic uses a bouquet photograph by Aleksandar Dimitriev, downloaded from Unsplash and served as a local WebP. Source and license links: `public/assets/romantic-bouquet-source.txt`. The photograph depicts demonstration styling, not a customer wedding. Imported fonts are served locally in their original families: Cormorant Garamond, DM Sans and Great Vibes. The main site retains Cormorant Garamond, DM Sans and Italianno.
 
-This template reuses decorative artwork from the specifically requested reference, unlike the original six designs. Original asset URLs are recorded in `public/assets/grace/sources.json`. The decorative hero video comes from `https://pub-4dc8201144ca418fb604349c73e8c724.r2.dev/Newbeautifulvideo.mp4`; its local mobile version is silent and compressed from 17.1 MB to 616 KB. The personalised envelope was edited using the built-in image generation tool to change only the seal initials to Y & A, then converted to WebP. The reference company's name, logo, family identities, RSVP destination and soundtrack are not used. The envelope opening is recreated with CSS rather than reusing footage with the reference couple's initials.
+## Recovery and review
+
+Branch: `codex/mobile-invitation-studio`. Baseline commit: `8fd7a76775cdc8697e792db664cb9e96ea174ce7`. A ZIP of that untouched baseline and the original supplied invitation ZIP are included in `delivery` beside the updated source archive.
+
+Read `REVIEW.md` for skill installation status, checks and limitations. Screenshots and machine-readable browser results are in `output/playwright`. Those are Chromium desktop-browser emulation captures, not physical-device results.
