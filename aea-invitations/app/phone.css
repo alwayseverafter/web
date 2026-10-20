@@ -3,10 +3,3 @@
 .phone-screen{height:100%;width:100%;overflow:hidden;border-radius:28px;isolation:isolate;background:#f4eedf}
 .phone-screen>.invitation-art{border-radius:inherit}
 @media(max-width:600px){.design-visual .phone-screen{border-radius:24px}}
-@font-face{font-family:OliveScript;src:url('/templates/olive-ivory-wedding/assets/fonts/font-7.ttf') format('truetype');font-display:swap}
-.olive-phone{position:relative;width:100%;height:100%;container-type:inline-size;background:#fae8d5;overflow:hidden;color:#866739}
-.olive-phone video{width:100%;height:auto;display:block;aspect-ratio:720/1252;object-fit:cover;mask-image:linear-gradient(#000 86%,transparent)}
-.olive-phone-names{position:absolute;top:37%;left:8%;width:84%;text-align:center;font-family:OliveScript,cursive;font-size:15cqw;line-height:1.15}
-.olive-phone-names>span{display:block}
-.olive-phone-names>i{display:block;font-style:normal;font-size:7.4cqw;line-height:.9}
-.olive-phone-names>p{font-family:var(--serif);font-size:5.6cqw;line-height:1.18;color:inherit;margin:3.8cqw 0 0}

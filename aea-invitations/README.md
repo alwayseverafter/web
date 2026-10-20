@@ -44,19 +44,19 @@ All eleven have `/designs/<slug>` detail pages and connect to `/create?design=<s
 - `public/assets/previews`: optimized WebP captures of each actual invitation. Decorative preview controls were hidden only during capture; the live controls remain functional.
 - `public/templates/olive-ivory-wedding`: standalone imported page. Its document boundary isolates its CSS and JavaScript; no iframe or nested scrolling is used.
 
-Olive & Ivory is first in the collection and uses its supplied palace video inside the hero, experience and collection phones. Videos load only when visible, pause offscreen or in background tabs, and respect reduced motion. Other cards use static screenshots. The original seven invitation openings remain; none was added to the four new designs. Main-site continuous scroll choreography and the moving ribbon were removed from rendering. Existing illustration, monogram, wordmark, fonts, names, contact links and invitation details are preserved.
+Main-site cards use static screenshots rather than eleven live embedded documents. The original seven invitation openings remain; none was added to the four new designs. Main-site continuous scroll choreography and the moving ribbon were removed from rendering. Existing illustration, monogram, wordmark, fonts, names, contact links and invitation details are preserved.
 
 ## Imported ZIP provenance
 
-The current Olive & Ivory template comes from the user-supplied `olive-ivory-wedding-code.zip` (19 October 2026 version). It replaces the earlier reconstruction with the supplied palace video, decorative media, scrolling sections and Anna & Alexander invitation. The source README is preserved alongside the page and records third-party media provenance.
+The supplied `olive-ivory-wedding-source.zip` is the primary source for the imported template. Its own README identifies it as a reconstruction, **not an original export of the ChatGPT-hosted private implementation**. Its original palace media was unavailable; the provided inline SVG is preserved. The published reference could not be loaded by the web inspection tool, so visual equivalence to that private original is not claimed.
 
-Integration adds collection and selection links, a favicon, local copies of the same fonts, and `css/atelier.css` for touch targets. The full invitation opens as a standalone page; phone previews use its animated cover without embedding the full document.
+Integration changes: a collection/selection toolbar, a favicon, local copies of the same Google Fonts, a separate `css/integration.css` for touch targets and focus, and honest RSVP feedback when browser storage is blocked. Existing invitation content, artwork, layout, countdown and navigation remain. The untouched supplied ZIP is included separately in the delivery folder. No hidden original files were recovered or invented.
 
 ## Data and services
 
 Enquiries are assembled on the visitor's device and handed to their email application or WhatsApp. The visitor must send the message there. No message was sent in testing. Business email: ashir.vp@alwayseverafter.com; WhatsApp: +49 176 667454311.
 
-All invitation details are demonstrations. The three new previews and original seven do not send real RSVPs. Olive & Ivory preserves its supplied local-storage RSVP (`palace-rsvp`); no response reaches a couple. Clearing site data removes it. There is no server RSVP database, payment checkout, or customer dashboard in the original flow. External map and WhatsApp links need those services to be available.
+All invitation details are demonstrations. The three new previews and original seven do not send real RSVPs. Olive & Ivory preserves its supplied local-storage RSVP (`oliveIvoryRsvpPreview`); no response reaches a couple. Clearing site data removes it. There is no server RSVP database, payment checkout, or customer dashboard in the original flow. External map and WhatsApp links need those services to be available.
 
 ## Assets
 
