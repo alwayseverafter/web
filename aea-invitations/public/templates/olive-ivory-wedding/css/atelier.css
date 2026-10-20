@@ -1,0 +1,5 @@
+.atelier-preview-bar{display:flex;justify-content:space-between;gap:12px;padding:4px 18px;border-bottom:1px solid #c5aa7d;background:#fae8d5;color:#534b3c;font:12px/1.4 Arial,sans-serif}
+.atelier-preview-bar a{display:flex;align-items:center;min-height:44px;text-underline-offset:4px}
+.motion{width:44px;height:44px}
+fieldset label{min-height:44px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
