@@ -32,3 +32,7 @@ Playwright CLI ran successfully after using Windows trusted certificate authorit
 ## Remaining limits
 
 The supplied ZIP is itself a reconstruction. Its README documents unavailable private original source and palace media. This integration preserves the supplied implementation, not an independently verified original. Published reference inspection failed. Preview RSVP is not a production response-collection service. Live website and remote branch were not replaced or pushed. Skill installations are machine-local and are not project runtime dependencies.
+
+## Delivery contents
+
+The source ZIP includes the project, ready-built `dist/client`, screenshots and verification results, plus the untouched baseline and supplied invitation ZIP under `recovery`. Dependencies and secret environment files are not packaged. With Node installed, `node scripts/serve-static.mjs` can preview the included production build without installing packages.
